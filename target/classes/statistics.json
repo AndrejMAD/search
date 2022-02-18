@@ -1,0 +1,31 @@
+{
+  "result": true,
+  "statistics": {
+    "total": {
+      "pages": 8,
+      "lemmas": 14,
+      "isIndexing": true,
+      "sites": 2
+    },
+    "detailed": [
+      {
+        "pages": 4,
+        "lemmas": 7,
+        "statusTime": "2022-02-10T12:03:53",
+        "name": "Demo1",
+        "error": null,
+        "url": "http://localhost:8080",
+        "status": "INDEXING"
+      },
+      {
+        "pages": 4,
+        "lemmas": 7,
+        "statusTime": "2022-02-10T12:03:56",
+        "name": "Demo2",
+        "error": null,
+        "url": "http://localhost:8080",
+        "status": "INDEXING"
+      }
+    ]
+  }
+}

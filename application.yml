@@ -1,0 +1,16 @@
+server.port: ${PORT:8080}
+spring.datasource.url: jdbc:${CLEARDB_DATABASE_URL:mysql://localhost:3306/search_engine}
+spring.datasource.username: root
+spring.datasource.password: admin
+spring.jpa.hibernate.ddl-auto: create-drop
+logging.level.org.hibernate.SQL: ERROR
+hibernate.show_sql: true
+spring.jpa.properties.hibernate.dialect: org.hibernate.dialect.MySQL8Dialect
+
+app:
+  web: /admin
+  userAgent: MADSearchBot
+  referrer: http://www.google.com
+  sites:
+    Demo1: http://localhost:8080
+
