@@ -84,6 +84,7 @@ public class SearchService {
         StringBuilder snippetBuilder = new StringBuilder();
         for (Lemma lemma : lemmaList) {
             snippetBuilder.append("<b>").append(lemma.getLemma()).append("</b>");
+            snippetBuilder.append("\n В разработке.");
         }
 
         searchResultElement.setSite(site.getUrl());
