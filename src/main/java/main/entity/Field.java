@@ -9,19 +9,19 @@ public class Field {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(nullable = false, columnDefinition = "VARCHAR(255)")
+    @Column(nullable = false, length = 255)
     private String name;
 
-    @Column(nullable = false, columnDefinition = "VARCHAR(255)")
+    @Column(nullable = false, length = 255)
     private String selector;
 
-    @Column(nullable = false, columnDefinition = "FLOAT")
-    private double weight;
+    @Column(nullable = false)
+    private float weight;
 
     public Field() {
     }
 
-    public Field(String name, String selector, double weight) {
+    public Field(String name, String selector, float weight) {
         this.name = name;
         this.selector = selector;
         this.weight = weight;
@@ -51,11 +51,11 @@ public class Field {
         this.selector = selector;
     }
 
-    public double getWeight() {
+    public float getWeight() {
         return weight;
     }
 
-    public void setWeight(double weight) {
+    public void setWeight(float weight) {
         this.weight = weight;
     }
 }

@@ -2,11 +2,11 @@ package main.service;
 
 import main.ApplicationConfig;
 import main.entity.*;
+import main.repository.*;
 import main.util.Morph;
 import org.jsoup.Connection;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
-import org.jsoup.nodes.DocumentType;
 import org.jsoup.select.Elements;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,32 +24,31 @@ import java.util.concurrent.RejectedExecutionException;
 @Service
 public class ScannerService {
 
+    public static Map<Integer, Set<String>> SCANNING_SITES = new HashMap<>();
     private static final int TIME_SLEEP_MIN = 500;
     private static final int TIME_SLEEP_MAX = 5000;
 
-    public static Map<Integer, Set<String>> SCANNING_SITES = new HashMap<>();
-
-    @Autowired
-    private ApplicationConfig config;
-
-    @Autowired
-    private SiteRepository siteRepository;
-    @Autowired
-    private PageRepository pageRepository;
-    @Autowired
-    private FieldRepository fieldRepository;
-    @Autowired
-    private LemmaRepository lemmaRepository;
-    @Autowired
-    private IndexRepository indexRepository;
-
     private Morph morph;
-
     private static ForkJoinPool threadPool;
 
-    public ScannerService() throws IOException {
+    private ApplicationConfig config;
+    private SiteRepository siteRepository;
+    private PageRepository pageRepository;
+    private FieldRepository fieldRepository;
+    private LemmaRepository lemmaRepository;
+    private IndexRepository indexRepository;
+
+    @Autowired
+    public ScannerService(ApplicationConfig config, SiteRepository siteRepository, PageRepository pageRepository,
+                          FieldRepository fieldRepository, LemmaRepository lemmaRepository, IndexRepository indexRepository) throws IOException {
         morph = new Morph();
         threadPool = new ForkJoinPool();
+        this.config = config;
+        this.siteRepository = siteRepository;
+        this.pageRepository = pageRepository;
+        this.fieldRepository = fieldRepository;
+        this.lemmaRepository = lemmaRepository;
+        this.indexRepository = indexRepository;
     }
 
     public boolean isIndexing() {

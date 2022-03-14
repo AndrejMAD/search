@@ -8,9 +8,9 @@ import javax.persistence.*;
 @Entity
 @Table(name = "indexes",
         indexes = {
-            @javax.persistence.Index(columnList = "lemma_id"),
-            @javax.persistence.Index(columnList = "lemma_id, page_id", unique = true)
-})
+                @javax.persistence.Index(columnList = "lemma_id"),
+                @javax.persistence.Index(columnList = "lemma_id, page_id", unique = true)
+        })
 public class Index {
 
     @Id
@@ -27,13 +27,13 @@ public class Index {
     @OnDelete(action = OnDeleteAction.CASCADE)
     private Lemma lemma;
 
-    @Column(name = "ranks", nullable = false, columnDefinition = "FLOAT")
-    private double rank;
+    @Column(name = "ranks", nullable = false)
+    private float rank;
 
     public Index() {
     }
 
-    public Index(Page page, Lemma lemma, double rank) {
+    public Index(Page page, Lemma lemma, float rank) {
         this.page = page;
         this.lemma = lemma;
         this.rank = rank;
@@ -63,11 +63,11 @@ public class Index {
         this.lemma = lemma;
     }
 
-    public double getRank() {
+    public float getRank() {
         return rank;
     }
 
-    public void setRank(double rank) {
+    public void setRank(float rank) {
         this.rank = rank;
     }
 }

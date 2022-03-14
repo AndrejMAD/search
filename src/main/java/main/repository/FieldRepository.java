@@ -1,5 +1,6 @@
-package main.entity;
+package main.repository;
 
+import main.entity.Field;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

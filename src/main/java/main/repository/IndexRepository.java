@@ -1,5 +1,8 @@
-package main.entity;
+package main.repository;
 
+import main.entity.Index;
+import main.entity.Lemma;
+import main.entity.Page;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;

@@ -8,7 +8,8 @@ import javax.persistence.Index;
 
 @Entity
 @Table(indexes = {
-        @Index(columnList = "site_id")
+        @Index(columnList = "site_id"),
+        @Index(columnList = "path")
 })
 public class Page {
 
@@ -21,7 +22,7 @@ public class Page {
     @OnDelete(action = OnDeleteAction.CASCADE)
     private Site site;
 
-    @Column(nullable = false, columnDefinition = "TEXT")
+    @Column(nullable = false, length = 500)
     private String path;
 
     @Column(nullable = false)

@@ -3,8 +3,8 @@ package main.entity;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
-import javax.persistence.*;
 import javax.persistence.Index;
+import javax.persistence.*;
 
 @Entity
 @Table(indexes = {
@@ -22,7 +22,7 @@ public class Lemma {
     @OnDelete(action = OnDeleteAction.CASCADE)
     private Site site;
 
-    @Column(nullable = false, columnDefinition = "VARCHAR(255)")
+    @Column(nullable = false, length = 255)
     private String lemma;
 
     @Column(nullable = false)

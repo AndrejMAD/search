@@ -12,16 +12,16 @@ public class Site {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(nullable = false, columnDefinition = "VARCHAR(255)")
+    @Column(nullable = false, length = 255)
     private String name;
 
-    @Column(nullable = false, columnDefinition = "VARCHAR(255)")
+    @Column(nullable = false, length = 255)
     private String url;
 
     @Column(nullable = false)
     private Status status;
 
-    @Column(nullable = false, columnDefinition = "DATETIME")
+    @Column(nullable = false)
     private LocalDateTime statusTime;
 
     @Column(columnDefinition = "TEXT")

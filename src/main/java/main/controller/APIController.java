@@ -1,9 +1,9 @@
 package main.controller;
 
-import main.entity.LemmaRepository;
-import main.entity.PageRepository;
+import main.repository.LemmaRepository;
+import main.repository.PageRepository;
 import main.entity.Site;
-import main.entity.SiteRepository;
+import main.repository.SiteRepository;
 import main.service.ScannerService;
 import main.service.SearchResultElement;
 import main.service.SearchService;
@@ -26,19 +26,21 @@ public class APIController {
     private static final String KEY_RESULT = "result";
     private static final String KEY_ERROR = "error";
 
-    @Autowired
     private SiteRepository siteRepository;
-    @Autowired
     private PageRepository pageRepository;
-    @Autowired
     private LemmaRepository lemmaRepository;
 
-    @Autowired
     private ScannerService scannerService;
-    @Autowired
     private SearchService searchService;
 
-    public APIController() {
+    @Autowired
+    public APIController(SiteRepository siteRepository, PageRepository pageRepository, LemmaRepository lemmaRepository,
+                         ScannerService scannerService, SearchService searchService) {
+        this.siteRepository = siteRepository;
+        this.pageRepository = pageRepository;
+        this.lemmaRepository = lemmaRepository;
+        this.scannerService = scannerService;
+        this.searchService = searchService;
     }
 
     @GetMapping("/api/search")
@@ -64,11 +66,10 @@ public class APIController {
             List<SearchResultElement> searchResult = searchService.search(query, site);
 
             result.put(KEY_RESULT, Boolean.TRUE);
-            result.put("count", 100);
+            result.put("count", searchResult.size());
             result.put("data", searchResult);
+            return result;
         }
-
-        return result;
     }
 
     /**

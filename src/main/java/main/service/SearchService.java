@@ -1,6 +1,9 @@
 package main.service;
 
 import main.entity.*;
+import main.repository.IndexRepository;
+import main.repository.LemmaRepository;
+import main.repository.SiteRepository;
 import main.util.Morph;
 import org.apache.logging.log4j.util.Strings;
 import org.jsoup.Jsoup;
@@ -19,15 +22,16 @@ public class SearchService {
 
     private Morph morph;
 
-    @Autowired
     private SiteRepository siteRepository;
-    @Autowired
     private LemmaRepository lemmaRepository;
-    @Autowired
     private IndexRepository indexRepository;
 
-    public SearchService() throws IOException {
+    @Autowired
+    public SearchService(SiteRepository siteRepository, LemmaRepository lemmaRepository, IndexRepository indexRepository) throws IOException {
         morph = new Morph();
+        this.siteRepository = siteRepository;
+        this.lemmaRepository = lemmaRepository;
+        this.indexRepository = indexRepository;
     }
 
     public List<SearchResultElement> search(String query, String siteUrl) {
