@@ -13,5 +13,5 @@ app:
   userAgent: MADSearchBot
   referrer: http://www.google.com
   sites:
-    Demo1: http://localhost:8080
+    Demo1: https://mad-searchengine.herokuapp.com
 
