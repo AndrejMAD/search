@@ -20,6 +20,17 @@
     <build>
         <plugins>
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <mainClass>main.Application</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
+            <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <executions>
@@ -44,7 +55,7 @@
     <repositories>
         <repository>
             <id>local</id>
-            <name>local repositoy</name>
+            <name>local repository</name>
             <url>file:${project.basedir}/lib</url>
         </repository>
     </repositories>
