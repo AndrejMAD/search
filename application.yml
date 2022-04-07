@@ -1,5 +1,5 @@
-server.port: ${PORT:8080}
 #CLEARDB_DATABASE_URL: mysql://b2c1e945361d6a:2ed0064f@eu-cdbr-west-02.cleardb.net/heroku_c297db5b7163d14?useUnicode\=true&characterEncoding\=utf-8&reconnect\=true
+server.port: ${PORT:8080}
 spring.datasource.url: jdbc:${CLEARDB_DATABASE_URL:mysql://localhost:3306/search_engine}
 spring.datasource.username: root
 spring.datasource.password: admin
